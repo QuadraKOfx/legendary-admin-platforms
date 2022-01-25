@@ -4,7 +4,7 @@ import Navigation from "../widgets/navigation";
 
 const Main = (props) => {
 
-    const { children, page } = props;
+    const { page } = props;
     console.error("MAIN COMPONENT PROPS => ", props);
 
     return (

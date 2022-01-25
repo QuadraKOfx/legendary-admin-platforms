@@ -1,8 +1,10 @@
 import React from "react";
 import "../../../utils/styles/home.css";
 import "./home.css";
+import Main from "../main";
 
 function WelcomeScreen() {
+
     return (
         <div className="card">
             <div style={{ textAlign: "center", paddingTop: 40, paddingBottom: 40 }}>
@@ -20,10 +22,14 @@ function WelcomeScreen() {
     );
 }
 
-function PageHome() {
+function PageHome(props) {
+
+    console.info("props home => ", props);
 
     return (
-        <WelcomeScreen />
+        <Main {...props}>
+            <WelcomeScreen />
+        </Main>
     );
 }
 

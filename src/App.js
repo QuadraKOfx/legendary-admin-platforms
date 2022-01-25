@@ -42,7 +42,7 @@ export class BootApp extends React.Component {
     render() {
 
         const routeComponents = _routes.map((route, key) =>
-            <Route path={route.route} element={<route.component/>} exact key={`${route.key}`}/>);
+            <Route path={route.route} element={<route.component {...this.state}/>} exact key={`${route.key}`}/>);
         const {page} = this.state;
 
         if (!page) {
@@ -51,11 +51,12 @@ export class BootApp extends React.Component {
 
         return (
             <Router history={history}>
-                <Main {...this.state}>
-                    <Routes>
-                        {routeComponents}
-                    </Routes>
-                </Main>
+                {/*<Main {...this.state}>*/}
+
+                {/*</Main>*/}
+                <Routes>
+                    {routeComponents}
+                </Routes>
             </Router>
         );
     }
