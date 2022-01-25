@@ -1,0 +1,101 @@
+#header {
+    min-height: 56px;
+    max-height: 56px;
+    padding: 0;
+    user-select: none;
+    position: fixed;
+    z-index: 11;
+    width: 100%;
+    left: 0;
+    top: 0;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 30%);
+}
+
+.h-inner {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: flex-start;
+}
+
+.top-bar {
+    background-color: darkred;
+}
+
+.top-bar .logo {
+    height: 32px;
+    margin-top: 4px;
+}
+
+.menu-trigger:hover {
+    cursor: pointer;
+}
+
+.menu-trigger i {
+    color: #94010a;
+    float: left;
+    font-size: 21px;
+    padding: 9px 0 0 0;
+}
+
+.b-b-lightgray {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.main-menu {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 30px 0;
+}
+
+.main-menu > li > a {
+    padding: 15px 15px 15px 60px;
+    display: block;
+    font-weight: 500;
+    position: relative;
+    color: #4C4C4C;
+}
+
+.main-menu > li > a > i {
+    font-weight: normal;
+    position: absolute;
+    left: 32px;
+    font-size: 18px;
+    top: 0;
+    text-align: center;
+}
+
+.main-menu.main-menu-slim > li > a > i {
+    padding: 10px 0;
+}
+
+.main-menu.main-menu-slim > li > a {
+    padding: 10px 15px 10px 60px;
+}
+
+.main-menu > li > a > i {
+    font-weight: normal;
+}
+
+.main-menu > li > a > i {
+    position: absolute;
+    left: 32px;
+    font-size: 18px;
+    top: 0;
+    text-align: center;
+    padding: 14px 0;
+}
+
+.main-menu > li.active > a, .main-menu > li > a:hover {
+    background-color: #f7f7f7;
+}
+
+.zmdi {
+    display: inline-block;
+    font: normal normal normal 14px/1 'Material-Design-Iconic-Font';
+    font-size: inherit;
+    text-rendering: auto;
+}

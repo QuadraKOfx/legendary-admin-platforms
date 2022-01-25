@@ -1,0 +1,89 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/jsx-runtime",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "newline-per-chained-call": 0,
+    "arrow-body-style": 0,
+    "import/no-cycle": 0,
+    "camelcase": 0,
+    "import/no-named-as-default-member": 0,
+    "object-curly-newline": 0,
+    "linebreak-style": 0,
+    "react/destructuring-assignment": 0,
+    "max-len": 0,
+    "no-nested-ternary": 0,
+    "object-shorthand": 0,
+    "arrow-parens": [
+      "error",
+      "always"
+    ],
+    "no-prototype-builtins": 0,
+    "react/no-array-index-key": 0,
+    "no-underscore-dangle": 0,
+    "no-dynamic-require": 0,
+    "react/prop-types": 0,
+    "no-script-url": "off",
+    "class-methods-use-this": "off",
+    "no-debugger": 0,
+    "no-alert": 0,
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "all"
+      }
+    ],
+    "no-unused-expressions": [
+      2,
+      {
+        "allowTaggedTemplates": true
+      }
+    ],
+    "no-param-reassign": [
+      2,
+      {
+        "props": false
+      }
+    ],
+    "no-console": 0,
+    "react/require-default-props": 0,
+    "radix": 0,
+    "no-shadow": [
+      2,
+      {
+        "hoist": "all",
+        "allow": [
+          "resolve",
+          "reject",
+          "done",
+          "next",
+          "err",
+          "error"
+        ]
+      }
+    ],
+    "quotes": [
+      2,
+      "double",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "prettier/prettier": 0
+  }
+}

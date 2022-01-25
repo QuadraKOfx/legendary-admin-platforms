@@ -1,0 +1,101 @@
+.sidebar-front-drop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 12;
+}
+
+#sidebar {
+    width: 300px;
+}
+
+.sidebar {
+    position: fixed;
+    background: #fff;
+    top: 56px;
+    height: calc(100% - 70px);
+    transition: all;
+    transition-duration: .3s;
+    z-index: 10;
+    overflow-y: auto;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1)
+}
+
+.sidebar-top {
+    display: block;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #ebebeb;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.sidebar-top .sidebar-top-picture {
+    padding: 10px 10px 10px 32px;
+}
+
+.sidebar-top .sidebar-top-info {
+    padding: 16px 16px 16px 32px;
+    color: #fff;
+    position: relative;
+}
+
+.sidebar-top .sidebar-top-info .sidebar-top-info-header {
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1.6;
+    color: #9b9b9b;
+}
+
+.sidebar-top .sidebar-top-info .sidebar-top-info-shop-name,
+.sidebar-top .sidebar-top-info .sidebar-top-info-shop-name:visited {
+    word-break: break-all;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 4px;
+    display: inline-block;
+}
+
+.sidebar-top .sidebar-top-info .sidebar-top-info-shopid {
+    word-break: break-all;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333333;
+}
+
+@media (max-width: 1200px) {
+    .sidebar {
+        top: 0;
+        height: calc(100%);
+        z-index: 13;
+        box-shadow: 0 0 4px rgba(14, 18, 21, 0.38) !important;
+    }
+
+    #sidebar {
+        -webkit-transform: translate3d(-302px, 0, 0);
+        transform: translate3d(-302px, 0, 0);
+        box-shadow: 0 0 20px rgb(14 18 21 / 38%);
+    }
+
+    .show-map.sidebar {
+        top: 56px;
+    }
+}
+
+@media (max-width: 991px) {
+    .snackbar {
+        left: 0;
+        right: 0;
+        transform: none;
+    }
+
+    .snackbar .snackbar-inner {
+        width: 100vw;
+        border-radius: 0;
+    }
+}

@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+dist/
+.idea/
+npm-debug.log
+node_modules/
+yarn-error.log
+coverage/
+*.env
+.vscode
+clients.local-key.pem
+clients.local.pem
