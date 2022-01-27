@@ -2,16 +2,19 @@
   text-align: center;
 }
 
+Link {
+  text-decoration: none;
+}
+
 body {
   font-weight: 500;
   font-size: 13px !important;
   line-height: 1.42857143 !important;
-  -moz-osx-font-smoothing: grayscale;
   color: #5E5E5E !important;
   background-color: #f7f7f7;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 990px) {
   body {
     background: #fff;
   }
@@ -20,7 +23,10 @@ body {
 #main {
   padding-top: 71px;
   position: relative;
-  min-height: 100vh;
+}
+
+.container-wrapper {
+  padding-left: 320px;
 }
 
 .container {
@@ -81,8 +87,7 @@ body {
 
 .flexbox {
   display: flex;
-  flex-direction: column;
-  height: calc(100vh - 71px);
+  height: calc(100vh - 90px);
 }
 
 a {
@@ -90,15 +95,39 @@ a {
   cursor: pointer;
 }
 
-@media (min-width: 1441px) {
+.row {
+  display: flex;
+  margin-right: -16px;
+  margin-left: -16px;
+}
+
+.col-lg-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.col-lg-9 {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 1200px;
+    padding-right: 16px;
+    padding-left: 16px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 1440px) {
   .container,
   .container-fluid {
     padding-left: 0;
     padding-right: 0;
   }
-}
 
-@media (max-width: 1440px) {
   #content {
     padding-left: 0;
     padding-right: 0;
@@ -106,15 +135,8 @@ a {
 
   .sidebar {
     top: 0;
-    height: calc(100%);
     z-index: 13;
     box-shadow: 0 0 4px rgba(14, 18, 21, 0.38) !important;
   }
 }
 
-@media (max-width: 991px) {
-  .container-no-gutter {
-    margin-left: -16px;
-    margin-right: -16px;
-  }
-}

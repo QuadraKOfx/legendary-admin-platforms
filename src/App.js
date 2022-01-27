@@ -2,9 +2,9 @@ import "./App.css";
 import React from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {_routes} from "./utils/Routes";
-import Main from "./components/pages/main";
 import history from "./configuration/history";
 import _ from "lodash";
+import SharedComponents from "./components/pages/profile/shared";
 
 export class BootApp extends React.Component {
 
@@ -16,7 +16,7 @@ export class BootApp extends React.Component {
         });
 
         if (page) {
-            console.error("PAGE AVAILABLE");
+            console.info("Setting Title for => ", page);
         } else {
             console.error("PAGE NOT AVAILABLE");
             window.location = _routes[0].route;
@@ -25,18 +25,6 @@ export class BootApp extends React.Component {
         this.state = {
             page: page || null,
         };
-    }
-
-    componentDidMount() {
-        history.listen(({pathname}) => {
-            const page = _.find(_routes, {route: pathname});
-            if(page) {
-                console.error("SET NEW PAGE PATH");
-                this.setState({page});
-            } else {
-                window.location = _routes[0].route;
-            }
-        });
     }
 
     render() {
@@ -51,12 +39,18 @@ export class BootApp extends React.Component {
 
         return (
             <Router history={history}>
-                {/*<Main {...this.state}>*/}
-
-                {/*</Main>*/}
-                <Routes>
-                    {routeComponents}
-                </Routes>
+                <SharedComponents />
+                <section id="main">
+                    <section id="content">
+                        <div className="container-wrapper">
+                            <div className="container">
+                                <Routes>
+                                    {routeComponents}
+                                </Routes>
+                            </div>
+                        </div>
+                    </section>
+                </section>
             </Router>
         );
     }

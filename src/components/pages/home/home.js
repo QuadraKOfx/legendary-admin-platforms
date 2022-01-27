@@ -14,22 +14,18 @@ function WelcomeScreen() {
                         style={{ width: 64 }}
                     />
                 </div>
-                <div className="welcome-to-portal">
-
-                </div>
+                <div className="welcome-to-portal"/>
             </div>
         </div>
     );
 }
 
-function PageHome(props) {
-
-    console.info("props home => ", props);
-
+function PageHome({page}) {
+    console.info("home => ", page);
     return (
-        <Main {...props}>
-            <WelcomeScreen />
-        </Main>
+        <div className={`row ${page.key}`}>
+
+        </div>
     );
 }
 

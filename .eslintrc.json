@@ -47,35 +47,9 @@
         "destructuring": "all"
       }
     ],
-    "no-unused-expressions": [
-      2,
-      {
-        "allowTaggedTemplates": true
-      }
-    ],
-    "no-param-reassign": [
-      2,
-      {
-        "props": false
-      }
-    ],
     "no-console": 0,
     "react/require-default-props": 0,
     "radix": 0,
-    "no-shadow": [
-      2,
-      {
-        "hoist": "all",
-        "allow": [
-          "resolve",
-          "reject",
-          "done",
-          "next",
-          "err",
-          "error"
-        ]
-      }
-    ],
     "quotes": [
       2,
       "double",

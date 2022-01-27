@@ -1,28 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import "../../utils/styles/widgets.css";
+import "../../utils/styles/navbar.css";
+import {useDispatch} from "react-redux";
+import {openSideBar} from "../../actions/interactions";
 
-export default class NavigationBar extends React.Component {
-    constructor(props) {
-        super(props);
+export default function NavigationBar() {
+    const dispatch = useDispatch();
+
+    const toggleSidebar = () => {
+        dispatch(openSideBar());
     }
 
-    open() {
-        console.info("Opening Navigation Bar");
-    }
-
-    render() {
-        return (
-            <header id="header" className={"clearfix top-bar"}>
-
-                <ul className="h-inner">
-                    <li className="menu-trigger" onClick={() => this.open()}>
-                        <i className="zmdi zmdi-menu c-white" />
-                    </li>
-                </ul>
-
-            </header>
-        );
-    }
-
+    return (
+        <header id="header" className={"clearfix top-bar"}>
+            <ul className="h-inner">
+                <li className="menu-trigger" onClick={toggleSidebar}>
+                    <i className="zmdi zmdi-menu c-white" />
+                </li>
+            </ul>
+        </header>
+    );
 
 }

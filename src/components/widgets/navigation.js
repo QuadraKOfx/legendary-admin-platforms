@@ -1,106 +1,97 @@
-import React, {Component} from "react";
+import React from "react";
 import {_routes} from "../../utils/Routes";
-import history from "../../configuration/history";
 import "../../utils/styles/sidebar.css";
+import "../../utils/styles/navbar.css";
+import {useDispatch, useSelector} from "react-redux";
+import {closeSideBar, setActiveRoute} from "../../actions/interactions";
+import {Link} from "react-router-dom";
+import _ from "lodash";
+import user from "../../utils/assets/images/test_avatar.png";
 
 const NavigationRoute = ({route, children, icon}) => {
+    const dispatch = useDispatch();
+    const sidebarState = useSelector(({app}) => app.sidebarReducer);
+    const className = sidebarState.route === route ? "active" : "";
 
-    let className = history.location.pathname === route ? "active" : "";
-
-    if (children) {
-        className = `${className} sub-menu toggled sub-menu-no-icon`;
-        console.info(className);
+    const _setActiveRoute = () => {
+        dispatch(setActiveRoute(route));
     }
+
+    const page = _.find(_routes, {
+        route: route,
+    });
 
     return (
         <li className={className}>
-            <a onClick={() => console.info("Navigating to selected Route => ", route)}>
+            <Link to={route} onClick={_setActiveRoute}>
                 {icon ? <i className={`zmdi zmdi-${icon}`}/> : null}
-                Test Title
-            </a>
+                {page.alt}
+            </Link>
             {children ? <ul className="show">{children}</ul> : null}
         </li>
     )
 }
 
-export default class Navigation extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            toggled: false,
-            vertical: "",
-        };
+export default function Navigation() {
+    const dispatch = useDispatch();
+    const sidebarState = useSelector(({app}) => app.sidebarReducer);
+    const toggleSidebar = () => {
+        dispatch(closeSideBar());
     }
 
-    logout() {
-        console.info("Login out soon");
-    }
+    return (
+        <div onClick={toggleSidebar} className={sidebarState.sidebar ? "sidebar-front-drop" : ""}>
+            <aside id="sidebar" className={`sidebar c-overflow ${sidebarState.sidebar ? "toggled" : ""}`}>
 
-    close() {
-        this.setState({toggled: false});
-    }
-
-    open() {
-        this.setState({toggled: true});
-    }
-
-    render() {
-        const {toggled} = this.state;
-        console.info(toggled);
-        return (
-            <div onClick={() => this.close()} className={toggled ? "sidebar-front-drop" : ""}>
-                <aside id="sidebar" className={`sidebar c-overflow ${toggled ? "toggled" : ""}`}>
-
-                    <div className="sidebar-top">
-                        <div className="sidebar-top-picture">
-                            {/*<img src={this.getShopLogo()} alt="" />*/}
-                            <img src={"https://assets.foody.com.cy/gravatar/no-avatar2.png"} alt="avatar"/>
-                        </div>
-
-                        <div className="sidebar-top-info">
-                            {/* WHICH STORE IS USING THE PLATFORM */}
-                            <div>
-                                <div className="sidebar-top-info-header">
-                                    ΚΑΤΑΣΤΗΜΑ
-                                </div>
-                                <div className="sidebar-top-info-shop-name">JMs - Service</div>
-                            </div>
-                            {/* WHAT IS THE STORE ID (IF ANY) */}
-                            <div style={{marginTop: 5}}>
-                                <div className="sidebar-top-info-header">
-                                    ΚΩΔ. ΚΑΤΑΣΤΗΜΑΤΟΣ
-                                </div>
-                                <div className="sidebar-top-info-shopid">
-                                    1273461
-                                </div>
-                            </div>
-
-                            {/* WHAT IS THE STORE ID (IF ANY) */}
-                            <div style={{marginTop: 5}}>
-                                <div className="sidebar-top-info-header">
-                                    ADMIN
-                                </div>
-                                <div className="sidebar-top-info-shopid">
-                                    Marios
-                                </div>
-                            </div>
-                        </div>
-
+                <div className="sidebar-top">
+                    <div className="sidebar-top-picture">
+                        {/*<img src={this.getShopLogo()} alt="" />*/}
+                        <img src={user} alt="avatar"/>
                     </div>
 
-                    <ul className="main-menu main-menu-slim b-b-lightgray" style={{margin: "0 0 16px 0"}}>
-                        <li onClick={() => this.logout()}>
-                            <a><i className="him-icon zmdi zmdi-power"/> Logout </a>
-                        </li>
-                    </ul>
+                    <div className="sidebar-top-info">
+                        {/* WHICH STORE IS USING THE PLATFORM */}
+                        <div>
+                            <div className="sidebar-top-info-header">
+                                ΚΑΤΑΣΤΗΜΑ
+                            </div>
+                            <div className="sidebar-top-info-shop-name">JMs - Service</div>
+                        </div>
+                        {/* WHAT IS THE STORE ID (IF ANY) */}
+                        <div style={{marginTop: 5}}>
+                            <div className="sidebar-top-info-header">
+                                ΚΩΔ. ΚΑΤΑΣΤΗΜΑΤΟΣ
+                            </div>
+                            <div className="sidebar-top-info-shopid">
+                                1273461
+                            </div>
+                        </div>
 
-                    <ul className={"main-menu"}>
-                        <NavigationRoute {..._routes[0]} title="Home Page" icon="home"/>
-                    </ul>
+                        {/* WHAT IS THE STORE ID (IF ANY) */}
+                        <div style={{marginTop: 5}}>
+                            <div className="sidebar-top-info-header">
+                                ADMIN
+                            </div>
+                            <div className="sidebar-top-info-shopid">
+                                Marios
+                            </div>
+                        </div>
+                    </div>
 
-                </aside>
-            </div>
-        );
-    }
+                </div>
+
+                <ul className="main-menu main-menu-slim b-b-lightgray" style={{margin: "0 0 16px 0"}}>
+                    <li onClick={() => console.info("Log-ing out => ")}>
+                        <Link to={"/"}><i className="him-icon zmdi zmdi-power"/> Logout </Link>
+                    </li>
+                </ul>
+
+                <ul className={"main-menu"}>
+                    <NavigationRoute {..._routes[0]} title="Home Page" icon="home"/>
+                    <NavigationRoute {..._routes[1]} title="Profile Page" icon="account-circle"/>
+                </ul>
+
+            </aside>
+        </div>
+    );
 }

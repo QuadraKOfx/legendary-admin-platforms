@@ -4,34 +4,9 @@
     "route": "/home",
     "protected": true
   },
-  "printerConfiguration": {
-    "key": "printerConfiguration",
-    "route": "/printer-configuration",
+  "profile": {
+    "key": "profilePage",
+    "route": "/profile",
     "protected": true
   },
-  "orders": {
-    "key": "pageOrders",
-    "route": "/orders",
-    "protected": true
-  },
-  "operations": {
-    "key": "pageOperations",
-    "route": "/operations",
-    "protected": true
-  },
-  "statsPromoted": {
-    "key": "pageStatsPromoted",
-    "route": "/stats/promoted",
-    "protected": true
-  },
-  "statsFiltered": {
-    "key": "pageStatsFiltered",
-    "route": "/stats/filtered",
-    "protected": true
-  },
-  "statsFeatured": {
-    "key": "pageStatsFeatured",
-    "route": "/stats/featured",
-    "protected": true
-  }
 }

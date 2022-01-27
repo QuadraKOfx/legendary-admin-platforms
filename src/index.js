@@ -3,9 +3,14 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import {BootApp} from "./App";
 import reportWebVitals from "./reportWebVitals";
+import {Provider} from "react-redux";
+import configureStore from "./store/index";
+const store = configureStore();
 
 ReactDOM.render(
-    <BootApp/>,
+    <Provider store={store}>
+        <BootApp/>
+    </Provider>,
     document.getElementById("root")
 );
 
