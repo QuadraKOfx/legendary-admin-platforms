@@ -3,27 +3,10 @@ import "../../../utils/styles/home.css";
 import "./home.css";
 import Main from "../main";
 
-function WelcomeScreen() {
-
+function PageHome(props) {
+    console.info(props);
     return (
-        <div className="card">
-            <div style={{ textAlign: "center", paddingTop: 40, paddingBottom: 40 }}>
-                <div style={{ paddingBottom: 24 }}>
-                    <img
-                        alt=""
-                        style={{ width: 64 }}
-                    />
-                </div>
-                <div className="welcome-to-portal"/>
-            </div>
-        </div>
-    );
-}
-
-function PageHome({page}) {
-    console.info("home => ", page);
-    return (
-        <div className={`row ${page.key}`}>
+        <div className={`row homePage`} key={`key-${props.alt}`}>
 
         </div>
     );

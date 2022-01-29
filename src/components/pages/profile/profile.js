@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "./profile.css";
 import avatar from "../../../utils/assets/images/avatar.png";
 
-function ProfilePage({page}) {
+function ProfilePage(props) {
     const [inputs, setInputs] = useState({});
 
     const handleChange = (event) => {
@@ -16,7 +16,7 @@ function ProfilePage({page}) {
     }
 
     return (
-        <div className={`row ${page.key}`}>
+        <div className={`row ${props.alt}`}>
             <div className="col-lg-3 pr-6 pl-6">
                 <div id="avatar" className="bg-white py-11 px-5 box-shadow rounded text-center mb-5">
                     <img src={avatar} className="mb-5" alt="User Avatar"

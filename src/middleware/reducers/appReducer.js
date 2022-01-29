@@ -1,10 +1,9 @@
-import { combineReducers } from "redux";
-
+import React, {combineReducers} from "redux";
 
 function createPostsReducer() {
 
     const sidebarReducer = (state = {sidebar: false, route: null}, action) => {
-        switch(action.type) {
+        switch (action.type) {
             case "SIDEBAR_SET_OPEN":
                 return {...state, sidebar: true};
             case "SIDEBAR_SET_CLOSE":

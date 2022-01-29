@@ -1,16 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import {BootApp} from "./App";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import {Provider} from "react-redux";
-import configureStore from "./store/index";
-const store = configureStore();
 
 ReactDOM.render(
-    <Provider store={store}>
-        <BootApp/>
-    </Provider>,
+    <App/>,
     document.getElementById("root")
 );
 

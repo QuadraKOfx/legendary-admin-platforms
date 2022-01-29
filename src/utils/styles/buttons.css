@@ -1,0 +1,17 @@
+.clean-btn {
+    background: 0 0;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    margin-right: 2rem;
+    font-size: 40px;
+}
+
+.clean-btn.sidebar-close {
+    margin-left: auto;
+}
+
+.MuiButton-contained {
+    background-color: darkred !important;
+}

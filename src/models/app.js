@@ -1,5 +1,6 @@
+import {useSelector} from "react-redux";
 
-
-// export const env = ENV;
-// export const version = VERSION;
-// export const variant = APP_VARIANT;
+export const checkUserExists = () => {
+    const uiState = useSelector(({uiState}) => uiState);
+    return uiState.sidebar;
+}

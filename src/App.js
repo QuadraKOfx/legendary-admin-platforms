@@ -1,57 +1,83 @@
 import "./App.css";
-import React from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import {_routes} from "./utils/Routes";
 import history from "./configuration/history";
-import _ from "lodash";
-import SharedComponents from "./components/pages/profile/shared";
+import SharedComponents from "./components/pages/shared";
 
-export class BootApp extends React.Component {
+const store = configureStore();
+import {Provider, useDispatch, useSelector} from "react-redux";
+import configureStore from "./store";
+import PageHome from "./components/pages/home/home";
+import LoginPage from "./components/pages/auth/login";
+import ProfilePage from "./components/pages/profile/profile";
+import RegisterPage from "./components/pages/auth/register";
+import {projectAuth} from "./middleware/db/firestore";
+import {setActiveUser} from "./middleware/actions/auth";
+import {closeSideBar} from "./middleware/actions/interactions";
 
-    constructor(props) {
-        super(props);
+function BootApp() {
 
-        const page = _.find(_routes, {
-            route: history.location.pathname,
-        });
+    const userState = useSelector(({auth}) => auth.userReducer);
+    const sidebar = useSelector(({app}) => app.sidebarReducer);
+    const [user, setUser] = useState();
+    const dispatch = useDispatch();
 
-        if (page) {
-            console.info("Setting Title for => ", page);
-        } else {
-            console.error("PAGE NOT AVAILABLE");
-            window.location = _routes[0].route;
-        }
-
-        this.state = {
-            page: page || null,
-        };
+    const onAuthStateChanged = (user) => {
+        setUser(user);
+        dispatch(setActiveUser(user));
     }
 
-    render() {
+    useEffect(() => {
+        const unsubscribe = projectAuth.onAuthStateChanged(onAuthStateChanged);
+        return unsubscribe();
+    }, [])
 
-        const routeComponents = _routes.map((route, key) =>
-            <Route path={route.route} element={<route.component {...this.state}/>} exact key={`${route.key}`}/>);
-        const {page} = this.state;
-
-        if (!page) {
-            return null;
+    useEffect(() => {
+        if (sidebar.sidebar && !userState.user) {
+            dispatch(closeSideBar());
         }
+    }, [userState?.user]);
 
-        return (
-            <Router history={history}>
-                <SharedComponents />
-                <section id="main">
-                    <section id="content">
-                        <div className="container-wrapper">
-                            <div className="container">
-                                <Routes>
-                                    {routeComponents}
-                                </Routes>
-                            </div>
+    // console.info(sidebar, userState);
+
+    return (
+
+        <Router history={history}>
+            <SharedComponents/>
+            <section id="main">
+                <section id="content">
+                    <div className={`container-wrapper ${sidebar.sidebar ? "pull-left" : "pull-right"}`}>
+                        <div className="container">
+                            <Routes>
+                                <Route path="/"
+                                       element={userState?.user ? <PageHome {..._routes[0]}/> :
+                                           <Navigate replace to="/login"/>} exact
+                                       key={`${_routes[0].key}`}/>
+                                <Route path={"/profile"}
+                                       element={userState?.user ? <ProfilePage {..._routes[1]}/> :
+                                           <Navigate replace to="/login"/>} exact
+                                       key={`${_routes[1].key}`}/>
+                                <Route path={"/register"}
+                                       element={<RegisterPage {..._routes[2]}/>} exact
+                                       key={`${_routes[2].key}`}/>
+                                <Route path={"/login"}
+                                       element={!userState?.user ? <LoginPage {..._routes[3]}/> :
+                                           <Navigate replace to="/"/>} exact
+                                       key={`${_routes[3].key}`}/>
+                            </Routes>
                         </div>
-                    </section>
+                    </div>
                 </section>
-            </Router>
-        );
-    }
+            </section>
+        </Router>
+    );
+}
+
+export default function App() {
+    return (
+        <Provider store={store}>
+            <BootApp/>
+        </Provider>
+    )
 }

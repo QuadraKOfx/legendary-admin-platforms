@@ -1,3 +1,5 @@
+@import "./utils/styles/media.css";
+
 .App {
   text-align: center;
 }
@@ -14,49 +16,13 @@ body {
   background-color: #f7f7f7;
 }
 
-@media (max-width: 990px) {
-  body {
-    background: #fff;
-  }
-}
-
 #main {
   padding-top: 71px;
   position: relative;
 }
 
-.container-wrapper {
-  padding-left: 320px;
-}
-
-.container {
-  width: 100%;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
+#root-inner {
+  position: relative;
 }
 
 @keyframes App-logo-spin {
@@ -97,46 +63,16 @@ a {
 
 .row {
   display: flex;
+  flex-wrap: wrap;
   margin-right: -16px;
   margin-left: -16px;
 }
 
-.col-lg-3 {
-  flex: 0 0 25%;
-  max-width: 25%;
-}
-
-.col-lg-9 {
-  flex: 0 0 75%;
-  max-width: 75%;
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 1200px;
-    padding-right: 16px;
-    padding-left: 16px;
-    margin-right: auto;
-    margin-left: auto;
-  }
-}
-
-@media (max-width: 1440px) {
-  .container,
-  .container-fluid {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  #content {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .sidebar {
-    top: 0;
-    z-index: 13;
-    box-shadow: 0 0 4px rgba(14, 18, 21, 0.38) !important;
-  }
+.col-lg-3, .col-lg-9 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 16px;
+  padding-left: 16px;
 }
 

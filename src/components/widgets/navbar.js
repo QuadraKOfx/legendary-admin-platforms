@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "../../utils/styles/widgets.css";
 import "../../utils/styles/navbar.css";
 import {useDispatch} from "react-redux";
-import {openSideBar} from "../../actions/interactions";
+import {openSideBar} from "../../middleware/actions/interactions";
 
 export default function NavigationBar() {
     const dispatch = useDispatch();

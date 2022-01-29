@@ -8,7 +8,7 @@
     width: 100%;
     left: 0;
     top: 0;
-    box-shadow: 0 1px 1px rgb(0 0 0 / 30%);
+    box-shadow: 0 1px 1px rgb(0 0 0 / 45%);
 }
 
 .clearfix {
@@ -41,8 +41,14 @@
     font-size: 21px;
 }
 
-.sidebar.toggled {
-    transform: translate3d(0, 0, 0) !important;
+.side-wrapper.toggled-off {
+    z-index: 5;
+}
+
+.side-wrapper.toggled {
+    transform: translate(0, 0);
+    transition-duration: .25s;
+    box-shadow: 0 0 4px rgba(14, 18, 21, 0.38);
 }
 
 .sub-menu-no-icon.toggled>a:after {
@@ -55,12 +61,5 @@
 
 .toggled .line-wrap .line {
     width: 16px;
-}
-
-@media (max-width: 990px) {
-
-    .h-inner>li {
-        padding: 15px 16px;
-    }
 }
 
