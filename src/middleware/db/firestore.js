@@ -18,11 +18,10 @@ import firebaseConfig from "./firebase.config";
 
 // init firebase
 firebase.initializeApp(firebaseConfig);
+firebase.firestore();
 
-// init services
-const projectFirestore = firebase.firestore();
 const projectAuth = firebase.auth();
 
-export {projectFirestore, projectAuth}
+export {projectAuth}
 
 // export default firebase.initializeApp(firebaseConfig).firestore();
