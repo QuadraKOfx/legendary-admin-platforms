@@ -28,8 +28,6 @@ function BootApp() {
         dispatch(setActiveUser(user));
     }
 
-    console.info(process.env);
-
     useEffect(() => {
         const unsubscribe = projectAuth.onAuthStateChanged(onAuthStateChanged);
         return unsubscribe();
