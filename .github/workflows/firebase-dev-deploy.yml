@@ -24,11 +24,10 @@ jobs:
       - name: Install Firebase
         run: npm i firebase-tools -g
       - name: Deploy Firebase Dev
-        run: firebase deploy --token ${{ secrets.GCLOUD_TOKEN }}
+        run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           projectId: jms-management-system
 
 
-
-
+#uses: FirebaseExtended/action-hosting-deploy@v0
