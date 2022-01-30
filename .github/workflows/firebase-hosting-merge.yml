@@ -6,6 +6,10 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - staging
+
+env:
+  NODE_ENV: 'development'
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -15,6 +19,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_ACCOUNT }}'
+          firebaseServiceAccount: '${{ secrets.ACCOUNT_FIREBASE }}'
           channelId: live
           projectId: jms-management-system
