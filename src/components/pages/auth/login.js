@@ -12,11 +12,8 @@ import Button from "@mui/material/Button";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {loginUserHook} from "../../../middleware/api/auth";
 import {useDispatch} from "react-redux";
-import {openSideBar} from "../../../middleware/actions/interactions";
 
-function LockOutlinedIcon() {
-    return null;
-}
+import test_logo from "../../../utils/assets/images/test_logo.jpg";
 
 function LoginPage() {
     const dispatch = useDispatch();
@@ -49,13 +46,12 @@ function LoginPage() {
                     flexDirection: "column",
                     alignItems: "center"
                 }}>
-                    <Avatar sx={{m: 1, bgcolor: "secondary.main"}}>
-                        <LockOutlinedIcon/>
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign up
-                    </Typography>
-                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 3}}>
+                    <Avatar sx={{marginTop: 1, width: `80${"%"}`, height: `80${"%"}`}} src={require("../../../utils/assets/images/logo.png")}/>
+                        {/*<LockOutlinedIcon/>*/}
+                    {/*<Typography component="h1" variant="h5">*/}
+                    {/*    Sign up*/}
+                    {/*</Typography>*/}
+                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 5}}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
                                 <TextField
