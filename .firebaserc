@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "jms-management-system"
-  }
+    "default": "jms-management-system",
+    "dev": "jms-management-system"
+  },
+  "targets": {}
 }

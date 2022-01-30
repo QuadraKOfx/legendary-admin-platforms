@@ -8,7 +8,7 @@ name: Deploy to Firebase Hosting on merge
       - staging
 
 env:
-  NODE_ENV: 'development'
+  NODE_ENV: 'production'
 
 jobs:
   build_and_deploy:

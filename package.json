@@ -30,6 +30,7 @@
   "scripts": {
     "start": "react-scripts start && run watch:css",
     "build": "react-scripts build",
+    "deploy:dev": "env-cmd -f .env.development npm run build && firebase deploy --only hosting -P dev",
     "test": "react-scripts test",
     "lint": "eslint.js",
     "eject": "react-scripts eject"
