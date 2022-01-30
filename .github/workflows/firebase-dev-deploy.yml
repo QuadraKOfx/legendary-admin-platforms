@@ -8,6 +8,9 @@ on:
     branches:
       - 'staging'
 
+env:
+  NODE_ENV: 'development'
+
 jobs:
 
   deploy:
@@ -18,14 +21,12 @@ jobs:
       - run: npm ci && npm run build
       - name: Setup the code
         run: npm install
-      - name: Test the code
-        run: npm test
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Deploy Firebase Dev
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_JMS_MANAGEMENT_SYSTEM }}'
           projectId: jms-management-system
-
 
 
 
