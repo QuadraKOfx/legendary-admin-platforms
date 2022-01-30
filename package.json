@@ -13,6 +13,7 @@
     "@types/react": "^17.0.38",
     "@types/react-native": "^0.66.15",
     "antd": "^4.18.5",
+    "dotenv": "^14.3.2",
     "firebase": "^9.6.4",
     "history": "^5.2.0",
     "lodash": "^4.17.21",
