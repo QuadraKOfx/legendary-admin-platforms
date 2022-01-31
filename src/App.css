@@ -1,4 +1,5 @@
-@import "./utils/styles/media.css";
+@import "material/assets/styles/media.css";
+@import "material/assets/styles/cards.css";
 
 .App {
   text-align: center;
@@ -16,13 +17,33 @@ body {
   background-color: #f7f7f7;
 }
 
-#main {
+#footer {
   padding-top: 71px;
+}
+
+#accolades {
+  border-top: 1px solid darkred;
+  border-bottom: 1px solid darkred;
+  height: 250px;
+  padding-top: 71px;
+}
+
+#main {
+  height: 100%;
+  padding-top: 55px;
   position: relative;
+  padding-bottom: 8rem;
 }
 
 #root-inner {
   position: relative;
+}
+
+.MuiCircularProgress-root {
+  width: 60px !important;
+  height: 60px !important;
+  margin-left: 50%;
+  margin-top: 30%;
 }
 
 @keyframes App-logo-spin {
@@ -45,10 +66,6 @@ body {
 .card {
   margin-bottom: 16px;
   border-radius: 4px;
-}
-
-#main {
-  padding-top: 71px;
 }
 
 .flexbox {

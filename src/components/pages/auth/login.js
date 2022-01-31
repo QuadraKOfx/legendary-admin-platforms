@@ -9,9 +9,10 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {loginUserHook} from "../../../middleware/api/auth";
+import {loginUserHook} from "../../../store/middleware/api/auth";
 import {useDispatch} from "react-redux";
-import {openSideBar} from "../../../middleware/actions/interactions";
+import {openSideBar} from "../../../store/middleware/actions/interactions";
+import Footer from "../../widgets/common/footer";
 
 function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
@@ -34,11 +35,11 @@ function LoginPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // todo use registerUserHook to register Users
-        console.info(e);
         _loginUser(email, password).then(() => {
             console.info("success");
             if (windowDimensions.width >= 1280) {
-                dispatch(openSideBar());
+                // dispatch(openSideBar());
+                console.info("Should I open the Sidemenu??");
             }
         }).catch((error) => {
             console.info(error);
@@ -53,8 +54,6 @@ function LoginPage() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    console.info(windowDimensions);
-
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
@@ -67,11 +66,7 @@ function LoginPage() {
                     flexDirection: "column",
                     alignItems: "center"
                 }}>
-                    <Avatar sx={{marginTop: 1, width: `80${"%"}`, height: `80${"%"}`}} src={require("../../../utils/assets/images/logo.png")}/>
-                        {/*<LockOutlinedIcon/>*/}
-                    {/*<Typography component="h1" variant="h5">*/}
-                    {/*    Sign up*/}
-                    {/*</Typography>*/}
+                    <Avatar sx={{marginTop: 1, width: `80${"%"}`, height: `80${"%"}`}} src={require("../../../material/assets/images/logo.png")}/>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 5}}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>

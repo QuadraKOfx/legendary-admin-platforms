@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../utils/styles/home.css";
+import "../../../material/assets/styles/home.css";
 import "./home.css";
 import { Box, Container, Grid } from "@mui/material";
 import {DayEarnings} from "../../widgets/dashboard/total-earnings";
@@ -11,12 +11,11 @@ function PageHome(props) {
     console.info(props);
     return (
         <>
-            <Box component="main" sx={{flexGrow: 1, py: 8}}>
+            <Box component="main" sx={{flexGrow: 1}}>
 
                 <Container component="main">
                     <Grid container spacing={1}>
                         <Grid item lg={3} sm={6} xl={3} xs={12}>
-                            {/*<Budget />*/}
                             <DayEarnings />
                         </Grid>
                         <Grid item xl={3} lg={3} sm={6} xs={12}>

@@ -11,7 +11,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {registerUserHook} from "../../../middleware/api/auth";
+import {registerUserHook} from "../../../store/middleware/api/auth";
 
 function LockOutlinedIcon() {
     return null;
@@ -64,7 +64,7 @@ function RegisterPage() {
                                 <TextField sx={{
                                     color: "currentColor",
                                     "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
-                                        borderColor: "darkred"
+                                        borderColor: "rgb(25, 118, 210);"
                                     }
                                 }}
                                     name="firstName"

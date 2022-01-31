@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./profile.css";
-import avatar from "../../../utils/assets/images/avatar.png";
+import avatar from "../../../material/assets/images/avatar.png";
 
 function ProfilePage(props) {
     const [inputs, setInputs] = useState({});

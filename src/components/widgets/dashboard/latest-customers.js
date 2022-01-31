@@ -10,11 +10,11 @@ Chart.register(...registerables);
 export const LatestCustomers = (props) => {
     const theme = useTheme();
 
-    const labels =["Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"];
+    const labels =["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     const data = {
         labels: labels,
         datasets: [{
-            label: "My First Dataset",
+            label: "Daily Earnings",
             data: [65, 59, 80, 81, 56, 55, 40],
             fill: false,
             borderColor: "rgb(75, 192, 192)",
@@ -28,38 +28,19 @@ export const LatestCustomers = (props) => {
     }
 
     return (
-        <Card {...props}>
+        <div className="card-wrapper">
             <CardHeader
                 action={("")}
-                title="Latest Customers"
-            />
+                title="Latest Customers"/>
             <Divider/>
             <CardContent>
-                <Box
-                    sx={{
+                <Box sx={{
                         height: 400,
                         position: "relative"
-                    }}
-                >
-                    <Line data={data}/>
+                    }}>
+                    <Line {...config}/>
                 </Box>
             </CardContent>
-            <Divider/>
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    p: 2
-                }}
-            >
-                <Button
-                    color="primary"
-                    endIcon={<ArrowRightIcon fontSize="small"/>}
-                    size="small"
-                >
-                    Overview
-                </Button>
-            </Box>
-        </Card>
+        </div>
     );
 };

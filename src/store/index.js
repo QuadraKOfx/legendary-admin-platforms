@@ -1,6 +1,6 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import appReducer from "../middleware/reducers/appReducer";
-import authReducer from "../middleware/reducers/authReducer";
+import appReducer from "./middleware/reducers/appReducer";
+import authReducer from "./middleware/reducers/authReducer";
 import thunkMiddleware from "redux-thunk";
 
 export default function configureStore() {

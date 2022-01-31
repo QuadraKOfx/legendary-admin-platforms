@@ -19,15 +19,15 @@
     z-index: 15;
 }
 
-.container-wrapper.pull-left {
-    padding-left: 302px;
-    transition-duration: .5s;
-}
+/*.container-wrapper.pull-left {*/
+/*    padding-left: 302px;*/
+/*    transition-duration: .5s;*/
+/*}*/
 
-.container-wrapper.pull-right {
-    padding: 0;
-    transition-duration: .5s;
-}
+/*.container-wrapper.pull-right {*/
+/*    padding: 0;*/
+/*    transition-duration: .5s;*/
+/*}*/
 
 .side-wrapper.toggled-off {
     transform: translate(-320px, 0);

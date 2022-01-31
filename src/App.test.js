@@ -23,7 +23,7 @@ test("Firebase initializeApp", () => {
     
     mockAuth.mockReturnValueOnce(authReturnValue);
     firebase.auth = mockAuth;
-    const auth = require("./middleware/db/firestore");
+    const auth = require("./store/middleware/db/firestore");
 
     expect(auth.projectAuth).toEqual({"auth": authReturnValue})
 })

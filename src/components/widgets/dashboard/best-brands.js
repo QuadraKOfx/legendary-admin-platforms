@@ -1,5 +1,5 @@
-import { Doughnut } from "react-chartjs-2";
-import { Box, Card, CardContent, CardHeader, Divider, Typography} from "@mui/material";
+import {Doughnut} from "react-chartjs-2";
+import {Box, Card, CardContent, CardHeader, Divider, Typography} from "@mui/material";
 import React from "react";
 
 export const BestBrands = (props) => {
@@ -35,46 +35,48 @@ export const BestBrands = (props) => {
         }
     ];
 
+    const config = {
+        type: "doughnut",
+        data: data
+    }
+
     return (
-        <Card {...props}>
-            <CardHeader title="Leading brands" />
-            <Divider />
-            <CardContent>
+        <div className="card-wrapper">
+            <CardHeader title="Leading brands"/>
+            <Divider/>
+            <div className="card-content">
                 <Box sx={{
-                        height: 300,
-                        position: "relative"
-                    }}>
-                    <Doughnut data={data} type={"doughnut"}/>
+                    height: 300,
+                    position: "relative"
+                }}>
+                    <Doughnut {...config}/>
                 </Box>
                 <Box sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        pt: 6}}>
+                    display: "flex",
+                    justifyContent: "center",
+                    pt: 3
+                }}>
 
-                    {devices.map(({
-                                      color,
-                                      title,
-                                      value
-                                  }) => (
-                        <Box
-                            key={title}
-                            sx={{
-                                p: 1,
-                                textAlign: "center"}}>
+                    {devices.map(({color, title, value}) => (
+                        <Box key={title}
+                             sx={{
+                                 p: 1,
+                                 textAlign: "center"
+                             }}>
                             <Typography
                                 color="textPrimary"
                                 variant="body1">
                                 {title}
                             </Typography>
                             <Typography
-                                style={{ color }}
+                                style={{color}}
                                 variant="h4">
                                 {value}%
                             </Typography>
                         </Box>
                     ))}
                 </Box>
-            </CardContent>
-        </Card>
+            </div>
+        </div>
     );
 };

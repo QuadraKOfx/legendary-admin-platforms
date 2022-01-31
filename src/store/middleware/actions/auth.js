@@ -20,7 +20,7 @@ import * as api from "../api/auth";
 // }
 
 export const setActiveUser = (user) => (dispatch) => {
-    dispatch({type: "SET_ACTIVE_USER", data: user});
+    dispatch({type: "SET_ACTIVE_USER", data: {user, isDev:true}});
 }
 
 export const setOfflineUser = () => (dispatch) => {

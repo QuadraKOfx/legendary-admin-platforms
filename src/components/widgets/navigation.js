@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react";
-import {_routes} from "../../utils/Routes";
-import "../../utils/styles/sidebar.css";
-import "../../utils/styles/navbar.css";
-import "../../utils/styles/buttons.css";
+import {_routes} from "../../configuration/Routes";
+import "../../material/assets/styles/sidebar.css";
+import "../../material/assets/styles/navbar.css";
+import "../../material/assets/styles/buttons.css";
 import {useDispatch, useSelector} from "react-redux";
-import {closeSideBar, setActiveRoute} from "../../middleware/actions/interactions";
+import {closeSideBar, setActiveRoute} from "../../store/middleware/actions/interactions";
 import {Link} from "react-router-dom";
 import _ from "lodash";
-import user from "../../utils/assets/images/test_avatar.png";
-import {logOutUserHook} from "../../middleware/api/auth";
+import user from "../../material/assets/images/test_avatar.png";
+import {logOutUserHook} from "../../store/middleware/api/auth";
 
 const NavigationRoute = ({path, icon}) => {
 
@@ -54,7 +54,7 @@ export default function Navigation() {
     }
 
     return (
-        <div className={`side-wrapper ${sidebarState.sidebar ? "toggled" : "toggled-off"}`} >
+        <div className={`side-wrapper ${sidebarState.sidebar ? "toggled sidebar-front-drop" : "toggled-off"}`} >
             <aside id="sidebar">
                 <div className="sidebar-top">
                     <div className="sidebar-top-picture">
@@ -96,18 +96,20 @@ export default function Navigation() {
 
                 </div>
 
-                <ul className="main-menu main-menu-slim b-b-lightgray" style={{margin: "0 0 16px 0"}}>
-                    <li onClick={handleSubmit}>
-                        <Link to={"/"}><i className="him-icon zmdi zmdi-power"/> Logout </Link>
-                    </li>
-                </ul>
+                <div className="bg-white h-full">
+                    <ul className="main-menu main-menu-slim b-b-lightgray" style={{margin: "0 0 16px 0"}}>
+                        <li onClick={handleSubmit}>
+                            <Link to={"/"}><i className="him-icon zmdi zmdi-power"/> Logout </Link>
+                        </li>
+                    </ul>
 
-                <ul className={"main-menu"}>
-                    <NavigationRoute path={_routes[0].route} title="Home Page" icon="home"/>
-                    <NavigationRoute path={_routes[1].route} title="Profile Page" icon="account-circle"/>
-                    {/*<NavigationRoute path={_routes[2].route} title="Register Page"/>*/}
-                    {/*<NavigationRoute path={_routes[3].route} title="Login Page"/>*/}
-                </ul>
+                    <ul className={"main-menu"}>
+                        <NavigationRoute path={_routes[0].route} title="Home Page" icon="home"/>
+                        <NavigationRoute path={_routes[1].route} title="Profile Page" icon="account-circle"/>
+                        {/*<NavigationRoute path={_routes[2].route} title="Register Page"/>*/}
+                        {/*<NavigationRoute path={_routes[3].route} title="Login Page"/>*/}
+                    </ul>
+                </div>
 
             </aside>
         </div>
