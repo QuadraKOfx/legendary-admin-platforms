@@ -14,7 +14,7 @@ import ProfilePage from "./components/pages/profile/profile";
 import RegisterPage from "./components/pages/auth/register";
 import {projectAuth} from "./middleware/db/firestore";
 import {setActiveUser} from "./middleware/actions/auth";
-import {closeSideBar} from "./middleware/actions/interactions";
+import {closeSideBar, openSideBar} from "./middleware/actions/interactions";
 
 function BootApp() {
 
@@ -23,9 +23,22 @@ function BootApp() {
     const [user, setUser] = useState();
     const dispatch = useDispatch();
 
+    const [screenSize, getDimension] = useState({
+        dynamicWidth: window.innerWidth,
+        dynamicHeight: window.innerHeight
+    });
+
+    const setDimension = () => {
+        getDimension({
+            dynamicWidth: window.innerWidth,
+            dynamicHeight: window.innerHeight
+        })
+    }
+
     const onAuthStateChanged = (user) => {
         setUser(user);
         dispatch(setActiveUser(user));
+        dispatch(openSideBar());
     }
 
     useEffect(() => {
@@ -36,6 +49,8 @@ function BootApp() {
     useEffect(() => {
         if (sidebar.sidebar && !userState.user) {
             dispatch(closeSideBar());
+        } else if (!sidebar.sidebar && screenSize >= 1400) {
+            dispatch(openSideBar());
         }
     }, [userState?.user]);
 

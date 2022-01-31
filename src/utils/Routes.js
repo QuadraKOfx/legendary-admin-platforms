@@ -3,10 +3,6 @@ import ProfilePage from "../components/pages/profile/profile";
 import RegisterPage from "../components/pages/auth/register";
 import LoginPage from "../components/pages/auth/login";
 
-// export const COMPONENTS_MATCHING = {
-//     pageHome: "/"
-// }
-
 export const _routes = [
     {
         key: "pageHome",

@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -12,8 +11,15 @@ import Button from "@mui/material/Button";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {loginUserHook} from "../../../middleware/api/auth";
 import {useDispatch} from "react-redux";
+import {openSideBar} from "../../../middleware/actions/interactions";
 
-import test_logo from "../../../utils/assets/images/test_logo.jpg";
+function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+        width,
+        height
+    };
+}
 
 function LoginPage() {
     const dispatch = useDispatch();
@@ -23,16 +29,31 @@ function LoginPage() {
 
     const theme = createTheme();
 
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // todo use registerUserHook to register Users
         console.info(e);
         _loginUser(email, password).then(() => {
             console.info("success");
+            if (windowDimensions.width >= 1280) {
+                dispatch(openSideBar());
+            }
         }).catch((error) => {
             console.info(error);
         })
     }
+
+    useEffect(() => {
+        function handleResize() {
+            setWindowDimensions(getWindowDimensions());
+        }
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    console.info(windowDimensions);
 
     return (
         <ThemeProvider theme={theme}>

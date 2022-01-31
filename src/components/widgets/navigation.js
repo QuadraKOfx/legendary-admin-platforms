@@ -39,28 +39,9 @@ export default function Navigation() {
     const sidebarState = useSelector(({app}) => app.sidebarReducer);
     const {_logoutUser, isPending, error} = logOutUserHook();
 
-    const [screenSize, getDimension] = useState({
-        dynamicWidth: window.innerWidth,
-        dynamicHeight: window.innerHeight
-    });
-    
     const toggleSidebar = () => {
         dispatch(closeSideBar());
     }
-
-    const setDimension = () => {
-        getDimension({
-            dynamicWidth: window.innerWidth,
-            dynamicHeight: window.innerHeight
-        })
-    }
-
-    useEffect(() => {
-        window.addEventListener("resize", setDimension);
-        return(() => {
-            window.removeEventListener("resize", setDimension);
-        })
-    }, [screenSize])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -70,10 +51,6 @@ export default function Navigation() {
         }).catch((error) => {
             console.info(error);
         })
-    }
-
-    if (sidebarState && (screenSize.dynamicWidth >= 1441)) {
-        console.info("OPEN SIDE BAR");
     }
 
     return (
@@ -128,8 +105,8 @@ export default function Navigation() {
                 <ul className={"main-menu"}>
                     <NavigationRoute path={_routes[0].route} title="Home Page" icon="home"/>
                     <NavigationRoute path={_routes[1].route} title="Profile Page" icon="account-circle"/>
-                    <NavigationRoute path={_routes[2].route} title="Register Page"/>
-                    <NavigationRoute path={_routes[3].route} title="Login Page"/>
+                    {/*<NavigationRoute path={_routes[2].route} title="Register Page"/>*/}
+                    {/*<NavigationRoute path={_routes[3].route} title="Login Page"/>*/}
                 </ul>
 
             </aside>
