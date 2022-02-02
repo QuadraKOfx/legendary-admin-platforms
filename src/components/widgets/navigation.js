@@ -37,6 +37,7 @@ const NavigationRoute = ({path, icon}) => {
 export default function Navigation() {
     const dispatch = useDispatch();
     const sidebarState = useSelector(({app}) => app.sidebarReducer);
+    const userState = useSelector(({auth}) => auth.userReducer);
     const {_logoutUser, isPending, error} = logOutUserHook();
 
     const toggleSidebar = () => {
@@ -99,13 +100,14 @@ export default function Navigation() {
                 <div className="bg-white h-full">
                     <ul className="main-menu main-menu-slim b-b-lightgray" style={{margin: "0 0 16px 0"}}>
                         <li onClick={handleSubmit}>
-                            <Link to={"/"}><i className="him-icon zmdi zmdi-power"/> Logout </Link>
+                            {userState?.user && <Link to={"/"}><i className="him-icon zmdi zmdi-power"/> Logout </Link>}
                         </li>
                     </ul>
 
                     <ul className={"main-menu"}>
-                        <NavigationRoute path={_routes[0].route} title="Home Page" icon="home"/>
-                        <NavigationRoute path={_routes[1].route} title="Profile Page" icon="account-circle"/>
+                        {userState?.user && <NavigationRoute path={_routes[0].route} title="Home Page" icon="home"/>}
+                        {userState?.user && <NavigationRoute path={_routes[1].route} title="Profile Page" icon="account-circle"/>}
+                        {!userState?.user && <NavigationRoute path={_routes[2].route} title="Register Page" icon="account-circle"/>}
                         {/*<NavigationRoute path={_routes[2].route} title="Register Page"/>*/}
                         {/*<NavigationRoute path={_routes[3].route} title="Login Page"/>*/}
                     </ul>

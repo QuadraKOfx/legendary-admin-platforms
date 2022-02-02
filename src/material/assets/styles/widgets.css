@@ -58,3 +58,15 @@
 .main-menu > li.active > a, .main-menu > li > a:hover {
     background-color: #f7f7f7;
 }
+
+#footer {
+    height: 250px;
+}
+
+#copyright {
+    text-align: center;
+}
+
+#accolades {
+    height: 150px;
+}

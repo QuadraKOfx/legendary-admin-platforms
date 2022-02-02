@@ -14,6 +14,8 @@ import {projectAuth} from "./store/middleware/db/firestore";
 import {setActiveUser} from "./store/middleware/actions/auth";
 import {closeSideBar} from "./store/middleware/actions/interactions";
 import LoadingView from "./components/widgets/common/loader";
+import Footer from "./components/widgets/common/footer";
+import Accolades from "./components/widgets/common/accolades";
 
 const store = configureStore();
 
@@ -78,8 +80,11 @@ function BootApp() {
                             </div>
                         </section>
                     </section>
-                    {!userState?.user && <section id="accolades">Accolades</section>}
-                    {!userState?.user && <section id="footer">Footer</section>}
+                    {!userState?.user && <section id="accolades"><Accolades/></section>}
+                    {!userState?.user && <section id="footer"><Footer /></section>}
+                    {!userState?.user && <section id="copyright" className="pad-1">
+                        © 2022 Legendary Platforms. All rights reserved.
+                    </section>}
                 </Router>
             ) : (
                 <div style={{height: "100%", width: "100%"}}>
