@@ -1,6 +1,8 @@
 import React from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import {Link} from "react-router-dom";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 function Footer() {
 
@@ -16,13 +18,16 @@ function Footer() {
 
                     <div className="col-lg-6 left">
                         <div>
-                            <a href="" className="mrl-2">
+                            <Link to="/" className="mrl-2">
                                 {/*<i className="fab fa-facebook-f"></i>*/}
                                 <TwitterIcon/>
-                            </a>
-                            <a href="" className="mrl-2">
+                            </Link>
+                            <Link to="/" className="mrl-2">
                                 <InstagramIcon/>
                                 {/*<i className="fab fa-twitter"></i>*/}
+                            </Link>
+                            <a href="https://www.linkedin.com/in/marios-constantinou-aa6799100/"
+                               className="mrl-2" target="_blank" rel="noreferrer"><LinkedInIcon/>
                             </a>
                         </div>
                     </div>
@@ -36,6 +41,7 @@ function Footer() {
                         <h5 className="mb-2">USEFUL LINKS</h5>
                         <p className="mt-2"><a className="text-reset">Services & Pricing</a></p>
                         <p className="mt-1"><a className="text-reset">Contact us</a></p>
+                        <p className="mt-1"><Link to="/register" className="text-reset">Register</Link></p>
                         <p className="mt-1"><a className="text-reset">Help</a></p>
                     </div>
                 </div>

@@ -1,0 +1,34 @@
+.responsive-table {
+    overflow-x: auto;
+    min-height: .01%;
+}
+
+.s-table {
+    width: 100%;
+}
+
+.s-table>thead>tr>th:first-child {
+    padding-left: 24px;
+}
+
+.s-table>thead>tr>th {
+    background-color: #fff;
+    vertical-align: middle;
+    font-weight: 500;
+    color: #333;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.s-table>tbody>tr>td {
+    padding: 10px;
+}
+
+.s-table>tbody>tr>td:first-child {
+    padding-left: 24px;
+}
+
+.MuiContainer-root {
+    padding-right: 16px;
+    padding-left: 16px;
+}

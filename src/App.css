@@ -53,11 +53,6 @@ body {
   height: 100%;
 }
 
-.card {
-  margin-bottom: 16px;
-  border-radius: 4px;
-}
-
 .flexbox {
   display: flex;
   height: calc(100vh - 90px);

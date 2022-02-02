@@ -13,6 +13,7 @@ import {loginUserHook} from "../../../store/middleware/api/auth";
 import {useDispatch} from "react-redux";
 import {openSideBar} from "../../../store/middleware/actions/interactions";
 import Footer from "../../widgets/common/footer";
+import {setShowWelcome} from "../../../store/middleware/actions/appActions";
 
 function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
@@ -37,6 +38,7 @@ function LoginPage() {
         // todo use registerUserHook to register Users
         _loginUser(email, password).then(() => {
             console.info("success");
+            dispatch(setShowWelcome());
             if (windowDimensions.width >= 1280) {
                 // dispatch(openSideBar());
                 console.info("Should I open the Sidemenu??");

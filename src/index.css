@@ -2,9 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html {
   height: 100%;
-  overflow: auto;
+  /* this makes sure the padding and the border is included in the box sizing */
+  box-sizing: border-box;
+  overflow-y: hidden;
+}
+
+html, body {
+  padding: 0;
+  overflow-y: inherit;
 }
 
 body {

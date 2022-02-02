@@ -1,4 +1,4 @@
-import PageHome from "../components/pages/home/home";
+import PageHome from "../components/pages/home";
 import ProfilePage from "../components/pages/profile/profile";
 import RegisterPage from "../components/pages/auth/register";
 import LoginPage from "../components/pages/auth/login";

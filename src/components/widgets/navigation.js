@@ -37,6 +37,7 @@ const NavigationRoute = ({path, icon}) => {
 export default function Navigation() {
     const dispatch = useDispatch();
     const sidebarState = useSelector(({app}) => app.sidebarReducer);
+    const appState = useSelector(({app}) => app.appReducer);
     const userState = useSelector(({auth}) => auth.userReducer);
     const {_logoutUser, isPending, error} = logOutUserHook();
 

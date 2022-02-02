@@ -1,4 +1,10 @@
 @media (max-width: 768px) {
+
+    .flex > .col-md-6 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
     .container-wrapper {
         padding: 0;
     }
@@ -48,6 +54,11 @@
 }
 
 @media (min-width: 1249px) {
+    /*.MuiContainer-root*/
+    .c-wrapper {
+        max-width: 100% !important;
+    }
+
     .container {
         padding-right: 5%;
         padding-left: 5%;
