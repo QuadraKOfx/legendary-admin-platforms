@@ -1,6 +1,8 @@
 @import "material/assets/styles/media.css";
 @import "material/assets/styles/cards.css";
 @import "material/assets/styles/misc/misc.css";
+@import "material/assets/styles/misc/tags.css";
+@import "antd/dist/antd.css";
 
 .App {
   text-align: center;
@@ -22,7 +24,6 @@ body {
   height: 100%;
   padding-top: 55px;
   position: relative;
-  padding-bottom: 8rem;
 }
 
 #root-inner {

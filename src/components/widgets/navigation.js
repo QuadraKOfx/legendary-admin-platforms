@@ -109,6 +109,7 @@ export default function Navigation() {
                         {userState?.user && <NavigationRoute path={_routes[0].route} title="Home Page" icon="home"/>}
                         {userState?.user && <NavigationRoute path={_routes[1].route} title="Profile Page" icon="account-circle"/>}
                         {!userState?.user && <NavigationRoute path={_routes[2].route} title="Register Page" icon="account-circle"/>}
+                        {userState?.user && <NavigationRoute path={_routes[4].route} title="Customers Page" icon="assignment"/>}
                         {/*<NavigationRoute path={_routes[2].route} title="Register Page"/>*/}
                         {/*<NavigationRoute path={_routes[3].route} title="Login Page"/>*/}
                     </ul>

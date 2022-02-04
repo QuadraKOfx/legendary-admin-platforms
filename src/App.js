@@ -18,6 +18,7 @@ import Footer from "./components/widgets/common/footer";
 import Accolades from "./components/widgets/common/accolades";
 import Snackbar from "./components/widgets/common/snackbar";
 import ScrollToTop from "./hooks/scrollToTop";
+import CustomersPage from "./components/pages/customers";
 
 const store = configureStore();
 
@@ -80,6 +81,9 @@ function BootApp() {
                                                    element={!userState?.user ? <LoginPage {..._routes[3]}/> :
                                                        <Navigate replace to="/"/>} exact
                                                    key={`${_routes[3].key}`}/>
+                                            <Route path={"/customers"}
+                                                   element={<CustomersPage {..._routes[4]}/>} exact
+                                                   key={`${_routes[4].key}`}/>
                                         </Routes>
                                     </ScrollToTop>
                                 </div>

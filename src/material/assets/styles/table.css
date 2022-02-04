@@ -32,3 +32,7 @@
     padding-right: 16px;
     padding-left: 16px;
 }
+
+.ant-table-tbody > tr > td > .actions-wrapper {
+    text-align: center;
+}
