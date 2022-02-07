@@ -67,10 +67,6 @@
     background-color: #f7f7f7;
 }
 
-/*.MuiGrid-root>.MuiGrid-item {*/
-/*    padding: 0;*/
-/*}*/
-
 #footer {
     height: 250px;
 }
@@ -83,4 +79,10 @@
 
 #accolades {
     height: 150px;
+}
+
+.info-panel {
+    width: 75%;
+    margin: auto;
+    font-size: 1.25rem;
 }

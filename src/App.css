@@ -2,6 +2,7 @@
 @import "material/assets/styles/cards.css";
 @import "material/assets/styles/misc/misc.css";
 @import "material/assets/styles/misc/tags.css";
+@import "material/assets/styles/profile.css";
 @import "antd/dist/antd.css";
 
 .App {

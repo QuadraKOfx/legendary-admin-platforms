@@ -11,8 +11,6 @@ import Button from "@mui/material/Button";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {loginUserHook} from "../../../store/middleware/api/auth";
 import {useDispatch} from "react-redux";
-import {openSideBar} from "../../../store/middleware/actions/interactions";
-import Footer from "../../widgets/common/footer";
 import {setShowWelcome} from "../../../store/middleware/actions/appActions";
 
 function getWindowDimensions() {

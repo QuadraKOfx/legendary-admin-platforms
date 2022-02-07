@@ -3,12 +3,8 @@ import "../../material/assets/styles/home.css";
 import { Box, Container, Grid } from "@mui/material";
 import {DayEarnings} from "../widgets/dashboard/total-earnings";
 import {TotalCustomers} from "../widgets/dashboard/total-customers";
-import {useDispatch} from "react-redux";
-import {setShowWelcome} from "../../store/middleware/actions/appActions";
 
-function PageHome(props) {
-    console.info(props);
-    const dispatch = useDispatch();
+function PageHome() {
 
     return (
         <>

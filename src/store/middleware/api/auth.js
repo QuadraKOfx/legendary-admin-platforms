@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import {projectAuth} from "../db/firestore";
 import {useDispatch} from "react-redux";
+import {signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
+import {listenToAuthChanges, setActiveUser, setOfflineUser} from "../actions/authActions";
 
 export const logOutUserHook = () => {
     const [error, setError] = useState(null);
@@ -34,7 +36,7 @@ export const loginUserHook = () => {
         setIsPending(true);
 
         try {
-            const res = await projectAuth.signInWithEmailAndPassword(email, password);
+            const res = await signInWithEmailAndPassword(projectAuth, email, password);
             // Dispatch Actions
             dispatch({type: "AUTH_LOGIN_DONE", payload: res.user});
 
@@ -62,27 +64,22 @@ export const loginUserHook = () => {
 export const registerUserHook = () => {
     const [error, setError] = useState(null);
     const [isPending, setIsPending] = useState(null);
-    const dispatch = useDispatch();
+    const [user, setUser] = useState(null);
 
     const _registerUser = async (email, password, userName) => {
         setError(null);
         setIsPending(true);
-
         try {
-            const res = await projectAuth.createUserWithEmailAndPassword(email.trim(), password);
-            console.error("USER SUCCESS => ", res.user);
-            // todo check if user provided a userName
-            await res.user.updateProfile({displayName: userName});
-
+            const user = await createUserWithEmailAndPassword(projectAuth, email.trim(), password);
+            setUser(user.user);
             setIsPending(false);
             setError(null);
-
         } catch (error) {
             console.error(error.message);
             setError(error.message);
             setIsPending(false);
         }
     }
-    return {_registerUser, error, isPending}
+    return {_registerUser, error, isPending, user}
 }
 

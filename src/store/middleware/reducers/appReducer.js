@@ -1,11 +1,12 @@
 import React, {combineReducers} from "redux";
+import firestoreReducer from "./firestoreReducer";
 
 const APP_INITIAL_STATE = {
     welcomeMode: false,
     isCookieConsent: false,
 };
 
-function createPostsReducer() {
+function createRootReducer() {
 
     const appReducer = (state = APP_INITIAL_STATE, action) => {
         switch (action.type) {
@@ -34,8 +35,9 @@ function createPostsReducer() {
 
     return combineReducers({
         sidebarReducer,
+        firestoreReducer,
         appReducer
     })
 }
 
-export default createPostsReducer();
+export default createRootReducer();

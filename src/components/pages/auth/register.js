@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -8,33 +7,46 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {registerUserHook} from "../../../store/middleware/api/auth";
 import {Link} from "react-router-dom";
+import {Select} from "antd";
+import {useDispatch} from "react-redux";
+import {registerClient} from "../../../store/middleware/actions/authActions";
 
-function LockOutlinedIcon() {
-    return null;
-}
+const { Option } = Select;
 
 function Copyright(props) {
     return null;
 }
 
+
 function RegisterPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [userName, setUsername] = useState("");
+    const [firstName, setFirstName] = useState("");
     const [lastName, setLastname] = useState("");
-    const {_registerUser, isPending, error} = registerUserHook();
-
+    const [userName, setUsername] = useState("");
+    const [industry, setIndustry] = useState("");
+    const {_registerUser, isPending, error, user} = registerUserHook();
+    const dispatch = useDispatch();
     const theme = createTheme();
+
+    const handleSetIndustry = (value) => {
+        setIndustry(value);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // todo use registerUserHook to register Users
         _registerUser(email, password, userName).then(() => {
-            console.info("Success");
+            dispatch(registerClient({
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                industry: industry,
+                uid: user.uid,
+                role: "admin",
+            }));
         }).catch((error) => {
             console.info(error.message);
         });
@@ -52,12 +64,6 @@ function RegisterPage() {
                     flexDirection: "column",
                     alignItems: "center"
                 }}>
-                    <Avatar sx={{m: 1, bgcolor: "secondary.main"}}>
-                        <LockOutlinedIcon/>
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign up
-                    </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 3}}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
@@ -67,11 +73,12 @@ function RegisterPage() {
                                         borderColor: "rgb(25, 118, 210);"
                                     }
                                 }}
-                                    name="firstName"
-                                    required
-                                    fullWidth
-                                    id="firstName"
-                                    label="First Name"/>
+                                           name="firstName"
+                                           required
+                                           onChange={(e) => setFirstName(e.target.value)}
+                                           fullWidth
+                                           id="firstName"
+                                           label="First Name"/>
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
@@ -92,6 +99,14 @@ function RegisterPage() {
                                     label="Email Address"
                                     name="email"
                                     autoComplete="email"/>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Select defaultValue="Select an Industry" style={{ width: 200 }}
+                                        onChange={handleSetIndustry}>
+                                    <Option value="barber">Barber</Option>
+                                    <Option value="mechanic">Mechanic</Option>
+                                    <Option value="physio">Physiotherapist</Option>
+                                </Select>
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField

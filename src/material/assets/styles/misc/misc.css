@@ -55,6 +55,10 @@
     margin-right: 2rem;
 }
 
+.m-auto {
+    margin: auto;
+}
+
 .w-full {
     height: 100%;
 }

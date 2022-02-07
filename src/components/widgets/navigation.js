@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {_routes} from "../../configuration/Routes";
 import "../../material/assets/styles/sidebar.css";
 import "../../material/assets/styles/navbar.css";
@@ -18,6 +18,7 @@ const NavigationRoute = ({path, icon}) => {
 
     const _setActiveRoute = () => {
         dispatch(setActiveRoute(path));
+        dispatch(closeSideBar());
     }
 
     const page = _.find(_routes, {
@@ -37,7 +38,7 @@ const NavigationRoute = ({path, icon}) => {
 export default function Navigation() {
     const dispatch = useDispatch();
     const sidebarState = useSelector(({app}) => app.sidebarReducer);
-    const appState = useSelector(({app}) => app.appReducer);
+    // const appState = useSelector(({app}) => app.appReducer);
     const userState = useSelector(({auth}) => auth.userReducer);
     const {_logoutUser, isPending, error} = logOutUserHook();
 
