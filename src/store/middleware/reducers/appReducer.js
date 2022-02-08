@@ -1,5 +1,6 @@
 import React, {combineReducers} from "redux";
 import firestoreReducer from "./firestoreReducer";
+import clientReducer from "./clientReducer";
 
 const APP_INITIAL_STATE = {
     welcomeMode: false,
@@ -35,6 +36,7 @@ function createRootReducer() {
 
     return combineReducers({
         sidebarReducer,
+        clientReducer,
         firestoreReducer,
         appReducer
     })

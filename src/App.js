@@ -44,6 +44,8 @@ function BootApp() {
         return unsubscribe();
     }, [])
 
+    console.info(userState);
+
     useEffect(() => {
         if (sidebar.sidebar && !userState.user) {
             dispatch(closeSideBar());
@@ -72,7 +74,8 @@ function BootApp() {
                                                        <Navigate replace to="/login"/>} exact
                                                    key={`${_routes[1].key}`}/>
                                             <Route path={"/register"}
-                                                   element={<RegisterPage {..._routes[2]}/>} exact
+                                                   element={!userState?.user ? <RegisterPage {..._routes[2]}/>
+                                                       : <Navigate replace to="/" />} exact
                                                    key={`${_routes[2].key}`}/>
                                             <Route path={"/login"}
                                                    element={!userState?.user ? <LoginPage {..._routes[3]}/> :

@@ -11,8 +11,6 @@ import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {registerUserHook} from "../../../store/middleware/api/auth";
 import {Link} from "react-router-dom";
 import {Select} from "antd";
-import {useDispatch} from "react-redux";
-import {registerClient} from "../../../store/middleware/actions/authActions";
 
 const { Option } = Select;
 
@@ -20,16 +18,14 @@ function Copyright(props) {
     return null;
 }
 
-
 function RegisterPage() {
+    // const [userName, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastname] = useState("");
-    const [userName, setUsername] = useState("");
     const [industry, setIndustry] = useState("");
-    const {_registerUser, isPending, error, user} = registerUserHook();
-    const dispatch = useDispatch();
+    const {_registerUser, isPending} = registerUserHook();
     const theme = createTheme();
 
     const handleSetIndustry = (value) => {
@@ -38,17 +34,8 @@ function RegisterPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        _registerUser(email, password, userName).then(() => {
-            dispatch(registerClient({
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                industry: industry,
-                uid: user.uid,
-                role: "admin",
-            }));
-        }).catch((error) => {
-            console.info(error.message);
+        _registerUser(email, password, {firstName, lastName, industry}).then(() => {
+            console.info("Registration Complete!");
         });
     }
 

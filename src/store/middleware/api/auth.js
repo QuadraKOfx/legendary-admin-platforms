@@ -2,7 +2,14 @@ import {useEffect, useState} from "react";
 import {projectAuth} from "../db/firestore";
 import {useDispatch} from "react-redux";
 import {signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
-import {listenToAuthChanges, setActiveUser, setOfflineUser} from "../actions/authActions";
+import {
+    listenToAuthChanges,
+    registerClient,
+    setActiveUser,
+    setAuthComplete,
+    setOfflineUser
+} from "../actions/authActions";
+import {useFirestore} from "../../../hooks/firestoreHook";
 
 export const logOutUserHook = () => {
     const [error, setError] = useState(null);
@@ -37,9 +44,7 @@ export const loginUserHook = () => {
 
         try {
             const res = await signInWithEmailAndPassword(projectAuth, email, password);
-            // Dispatch Actions
-            dispatch({type: "AUTH_LOGIN_DONE", payload: res.user});
-
+            dispatch(setAuthComplete(res));
             if (!isCancelled) {
                 setIsPending(false);
                 setError(null);
@@ -60,18 +65,29 @@ export const loginUserHook = () => {
     return {_loginUser, error, isPending}
 }
 
-// todo decide compared to the above function
+
 export const registerUserHook = () => {
     const [error, setError] = useState(null);
     const [isPending, setIsPending] = useState(null);
-    const [user, setUser] = useState(null);
+    const {addDocument} = useFirestore("clients");
+    const dispatch = useDispatch();
 
-    const _registerUser = async (email, password, userName) => {
+    const _registerUser = async (email, password, payload) => {
         setError(null);
         setIsPending(true);
         try {
-            const user = await createUserWithEmailAndPassword(projectAuth, email.trim(), password);
-            setUser(user.user);
+            const res = await createUserWithEmailAndPassword(projectAuth, email.trim(), password);
+            dispatch(setAuthComplete(res));
+
+            await addDocument({
+                firstName: payload.firstName,
+                lastName: payload.lastName,
+                email: res.user.email,
+                industry: payload.industry,
+                uid: res.user.uid,
+                role: "admin",
+            }).catch();
+
             setIsPending(false);
             setError(null);
         } catch (error) {
@@ -80,6 +96,7 @@ export const registerUserHook = () => {
             setIsPending(false);
         }
     }
-    return {_registerUser, error, isPending, user}
+
+    return {_registerUser, error, isPending}
 }
 

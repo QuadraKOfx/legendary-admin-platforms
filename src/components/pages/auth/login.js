@@ -33,12 +33,9 @@ function LoginPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // todo use registerUserHook to register Users
         _loginUser(email, password).then(() => {
-            console.info("success");
             dispatch(setShowWelcome());
             if (windowDimensions.width >= 1280) {
-                // dispatch(openSideBar());
                 console.info("Should I open the Sidemenu??");
             }
         }).catch((error) => {
@@ -97,24 +94,28 @@ function LoginPage() {
                                 />
                             </Grid>
                         </Grid>
-                        {!isPending && <Button
-                            onClick={handleSubmit}
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{mt: 3, mb: 2}}>
-                            Login
-                        </Button>}
 
-                        {isPending && <Button
-                            onClick={handleSubmit}
-                            type="submit"
-                            fullWidth
-                            disabled
-                            variant="contained"
-                            sx={{mt: 3, mb: 2}}>
-                            loading
-                        </Button>}
+                        <div>
+                            {!isPending && <Button
+                                onClick={handleSubmit}
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                sx={{mt: 3, mb: 2}}>
+                                Login
+                            </Button>}
+
+                            {isPending && <Button
+                                onClick={handleSubmit}
+                                type="submit"
+                                fullWidth
+                                disabled
+                                variant="contained"
+                                sx={{mt: 3, mb: 2}}>
+                                loading
+                            </Button>}
+                        </div>
+
                     </Box>
                 </Box>
             </Container>

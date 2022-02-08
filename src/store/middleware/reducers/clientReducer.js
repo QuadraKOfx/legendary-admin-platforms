@@ -1,14 +1,9 @@
 
 
-const initialState = {
-    document: null,
-    isPending: false,
-    error: null,
-    success: null
-}
-
-const clientReducer = (state = initialState, actions) => {
-    switch (actions.type) {
+export default function clientReducer(state = null, action) {
+    switch (action.type) {
+        case "USER_FIREBASE_SET":
+            return {...state, user: action.payload};
         default:
             return state;
     }

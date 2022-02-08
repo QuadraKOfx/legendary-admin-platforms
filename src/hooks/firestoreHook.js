@@ -5,7 +5,8 @@ export const useFirestore = (collectionName) => {
 
     // Add collection
     const addDocument = async (note) => {
-        const ref = doc(note.uid).collection(db, collectionName);
+        console.info(note);
+        const ref = doc(db, collectionName, note.uid);
         const createdAdd = Timestamp.fromDate(new Date())
         const _payload = {...note, createdAdd};
         await setDoc(ref, _payload);
